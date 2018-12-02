@@ -36,7 +36,7 @@ $app->singleton(
 
 
 $_worker = new Worker('http://127.0.0.1:7272');
-$_worker->count = 1;
+$_worker->count = 4;
 $_worker->onWorkerStart = function ($worker) use ($app) {
   $_kernel = $app->make( Illuminate\Contracts\Http\Kernel::class);
   $_kernel->bootstrap();
@@ -56,16 +56,16 @@ $_worker->onWorkerStart = function ($worker) use ($app) {
   }
 };
 $_worker->onConnect = function ($connection) {
-  echo $connection->id . " onConnect \n";
+  //echo $connection->id . " onConnect \n";
 };
 $_worker->onMessage = function ($connection, $data) use ($app) {
-  echo $connection->id . " onMessage \n";
+  //echo $connection->id . " onMessage \n";
   $_request = new \Cbworker\Core\Http\HttpRequest($data);
   $_response = new \Cbworker\Core\Http\HttpResponse($connection);
   $app->make('dispatcher')->dispatch($_request, $_response);
 };
 $_worker->onClose = function ($connection) {
-  echo $connection->id . " Close \n";
+  //echo $connection->id . " Close \n";
 };
 $_worker->onWorkerReload = function ($worker) {
 

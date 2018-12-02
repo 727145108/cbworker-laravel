@@ -12,7 +12,7 @@ use \Illuminate\Database\Eloquent\Model;
 class b extends Model
 {
  
-  protected $table = 'b';
+  protected $table = 'users';
   
   public $timestamps  = false;
   

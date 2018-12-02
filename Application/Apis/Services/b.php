@@ -11,6 +11,6 @@ namespace Application\Apis\Services;
 class b
 {
   public function getDetail($_id) {
-    return \Application\Apis\Models\b::where('id', $_id)->first();
+    return \Application\Apis\Models\b::where('id', '>', $_id)->first();
   }
 }

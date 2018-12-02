@@ -9,6 +9,7 @@
 return [
   'env'           => 'local',
   'log'           => 'daily',
+  'log_level'     => 'error',
   'name'          => 'CbWorkerApis',
   'namespace'     => 'Application\\Apis\\',
 

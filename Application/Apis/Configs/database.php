@@ -55,7 +55,7 @@ return [
     'mysql' => [
       'driver'    => 'mysql',
       'host'      => 'localhost',
-      'database'  => 'test',
+      'database'  => 'crababy',
       'username'  => 'root',
       'password'  => '',
       'charset'   => 'utf8',

@@ -20,7 +20,6 @@ class AdminController extends Controller
   
   function __construct(bService $bService)
   {
-    echo "__construct \n";
     $this->bService = $bService;
   }
   
@@ -30,8 +29,7 @@ class AdminController extends Controller
     logger()->info("this is Admin Login Info");
     //$items = Capsule::table('supply_stat')->where('id', 15)->get();
     $_id = request()->post('id', 1);
-    $info = $this->bService->getDetail($_id);
-    event(new Warehouse($info));
+    $info = array();
     response()->setData(['list' => $info]);
   }
 

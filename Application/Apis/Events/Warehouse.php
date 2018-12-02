@@ -7,11 +7,12 @@ namespace Application\Apis\Events;
  * Date: 2018/12/2
  * Time: 11:21
  */
+use \Application\Apis\Models\b;
 class Warehouse extends Event
 {
   public $b;
   
-  function __construct(\Application\Apis\Models\b $b)
+  function __construct(b $b)
   {
     $this->b = $b;
   }
