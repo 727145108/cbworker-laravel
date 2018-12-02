@@ -1,0 +1,25 @@
+{
+    "name": "crababy/cbworker",
+    "description": "cbworker framework",
+    "require": {
+        "illuminate/events": "^5.5",
+        "illuminate/database": "^5.5",
+        "workerman/workerman": "^3.5",
+        "monolog/monolog": "^1.24",
+        "symfony/http-foundation": "~3.3",
+        "predis/predis": "~1.0"
+    },
+    "autoload": {
+        "files": ["src/helpers.php"],
+        "psr-4": {
+          "Cbworker\\": "src",
+          "Application\\": "Application"
+        }
+    },
+    "authors": [
+        {
+            "name": "crababy",
+            "email": "727145108@qq.com"
+        }
+    ]
+}
