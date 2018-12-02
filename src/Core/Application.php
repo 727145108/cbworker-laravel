@@ -706,6 +706,11 @@ class Application extends Container implements ApplicationContract
     // TODO: Implement runningInConsole() method.
   }
   
+  public function runningUnitTests()
+  {
+    // TODO: Implement runningUnitTests() method.
+  }
+  
   /**
    * Determine if the application is currently down for maintenance.
    *
