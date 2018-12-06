@@ -9,7 +9,7 @@
 return [
   'env'           => 'local',
   'log'           => 'daily',
-  'log_level'     => 'error',
+  'log_level'     => 'debug',
   'name'          => 'CbWorkerApis',
   'namespace'     => 'Application\\Apis\\',
 
@@ -19,13 +19,13 @@ return [
   'statistic'     => [
     'address'     => ''
   ],
-  
+
   'providers'     => [
     Illuminate\Database\DatabaseServiceProvider::class,
     Cbworker\Core\Redis\RedisServiceProvider::class,
     Application\Apis\Providers\EventServiceProvider::class,
   ],
-  
+
   'aliases'        => [
     'App'       => Illuminate\Support\Facades\App::class,
     'Cache'     => Illuminate\Support\Facades\Cache::class,
