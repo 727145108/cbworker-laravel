@@ -1,6 +1,6 @@
 {
-    "name": "crababy/cbworker",
-    "description": "cbworker framework",
+    "name": "crababy/cbworker-laravel",
+    "description": "cbworker-laravel framework",
     "require": {
         "illuminate/events": "5.5",
         "illuminate/database": "5.5",
