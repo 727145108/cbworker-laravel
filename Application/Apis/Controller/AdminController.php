@@ -60,7 +60,7 @@ class AdminController extends Controller
     ]);
 
     response()->setData(['notes' => app('migrator')->getNotes()]);
-    
+
   }
 
   public function DownLoad() {
