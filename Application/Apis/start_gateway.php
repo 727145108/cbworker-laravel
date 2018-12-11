@@ -35,8 +35,8 @@ $app->singleton(
 );
 
 
-$_worker = new Worker('http://127.0.0.1:7272');
-$_worker->count = 4;
+$_worker = new Worker('http://127.0.0.1:8282');
+$_worker->count = 1;
 $_worker->onWorkerStart = function ($worker) use ($app) {
   $_kernel = $app->make( Illuminate\Contracts\Http\Kernel::class);
   $_kernel->bootstrap();

@@ -11,5 +11,7 @@ namespace Cbworker\Core\Http;
 
 class Controller
 {
-  
+  public function __construct() {
+    
+  }
 }

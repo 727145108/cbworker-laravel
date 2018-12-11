@@ -8,12 +8,15 @@
 
 return [
   'env'           => 'local',
+  'debug'         => 'true',
+
+  /*日志信息配置*/
   'log'           => 'daily',
   'log_level'     => 'debug',
-  'name'          => 'CbWorkerApis',
-  'namespace'     => 'Application\\Apis\\',
+  'log_max_files' => 7,
 
-  'Language'      => 'zh',
+  'name'          => 'CbWorkerApis',
+  'namespace'     => 'Application\Apis\\',
 
   'report'        => true,
   'statistic'     => [
@@ -22,6 +25,8 @@ return [
 
   'providers'     => [
     Illuminate\Database\DatabaseServiceProvider::class,
+    Illuminate\Filesystem\FilesystemServiceProvider::class,
+    Illuminate\Database\MigrationServiceProvider::class,
     Cbworker\Core\Redis\RedisServiceProvider::class,
     Application\Apis\Providers\EventServiceProvider::class,
   ],
@@ -31,6 +36,7 @@ return [
     'Cache'     => Illuminate\Support\Facades\Cache::class,
     'Config'    => Illuminate\Support\Facades\Config::class,
     'DB'        => Illuminate\Support\Facades\DB::class,
+    'Schema'    => Illuminate\Support\Facades\Schema::class,
     'Event'     => Illuminate\Support\Facades\Event::class,
     'Log'       => Illuminate\Support\Facades\Log::class,
     'Queue'     => Illuminate\Support\Facades\Queue::class,

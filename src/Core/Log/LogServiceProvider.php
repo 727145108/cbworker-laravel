@@ -49,7 +49,7 @@ class LogServiceProvider extends ServiceProvider
       if ($this->app->bound('config')) {
         return $this->app->make('config')->get('app.env', 'production');
       }
-  
+
       return 'production';
     }
 

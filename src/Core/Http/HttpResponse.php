@@ -13,9 +13,9 @@ use Cbworker\Core\AbstractInterface\Response;
 
 class HttpResponse extends ServiceProvider implements Response
 {
-  
+
   protected $_connection = null;
-  
+
   protected $_code = 200;
 
   protected $_message = null;
@@ -32,22 +32,23 @@ class HttpResponse extends ServiceProvider implements Response
   protected $_rawData = '';
 
   protected $_result = null;
-  
-  
+
+
   function __construct($connection)
   {
     $this->_connection = $connection;
   }
-  
+
   public function send($message = '', $raw = false) {
     if(!empty($message)) {
       $this->_connection->send($message, $raw);
     } else {
       $message = json_encode($this->build());
       $this->_connection->send($message);
+      $this->_data = '';
     }
   }
-  
+
   public function close() {
     $this->_connection->close();
   }

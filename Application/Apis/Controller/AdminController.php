@@ -9,28 +9,58 @@
 
 namespace Application\Apis\Controller;
 
+use Event;
 use Application\Apis\Events\Warehouse;
 use Cbworker\Core\Http\Controller;
+use Illuminate\Database\Migrations\Migrator;
+use Application\Apis\Events\Warehouse as warehouseEvent;
 use Application\Apis\Services\b as bService;
 
 class AdminController extends Controller
 {
-  
+  /**
+   * The migrator instance.
+   *
+   * @var \Illuminate\Database\Migrations\Migrator
+   */
+  protected $migrator;
+
+
+
   protected $bService;
-  
-  function __construct(bService $bService)
+
+  /**
+   * Create a new migration command instance.
+   *
+   * @param  \Illuminate\Database\Migrations\Migrator  $migrator
+   * @return void
+   */
+  public function __construct(bService $bService)
   {
-    $this->bService = $bService;
+      parent::__construct();
+
+      $this->bService = $bService;
   }
-  
+
   public function Login() {
-    logger()->error("this is Admin Login Error");
-    logger()->debug("this is Admin Login Debug");
-    logger()->info("this is Admin Login Info");
-    //$items = Capsule::table('supply_stat')->where('id', 15)->get();
-    $_id = request()->post('id', 1);
-    $info = array();
-    response()->setData(['list' => $info]);
+    $info = $this->bService->getDetail(1);
+    Event::fire(new warehouseEvent($info));
+    response()->setData(['list' => ['id' => $info]]);
+  }
+
+  public function migrate() {
+    //DIRECTORY_SEPARATOR.'migrations';
+    $path = app('path.database') . DIRECTORY_SEPARATOR.'migrations';
+
+    //app('migrator')->getRepository()->createRepository();
+
+    app('migrator')->run($path, [
+        'pretend' => false,
+        'step' => 0,
+    ]);
+
+    response()->setData(['notes' => app('migrator')->getNotes()]);
+    
   }
 
   public function DownLoad() {

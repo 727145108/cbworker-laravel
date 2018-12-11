@@ -16,12 +16,12 @@ class WarehouseListener
   function __construct()
   {
   }
-  
+
   public function handle(Warehouse $warehouse) {
     print_r('WarehouseListener handle');
   }
-  
+
   public function failed(Warehouse $warehouse, $exception) {
-    print_r('WarehouseListener handle');
+    print_r('WarehouseListener failed');
   }
 }
