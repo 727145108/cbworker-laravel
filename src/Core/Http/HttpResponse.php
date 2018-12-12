@@ -8,6 +8,7 @@
 
 namespace Cbworker\Core\Http;
 
+use Workerman\Protocols\Http;
 use Illuminate\Support\ServiceProvider;
 use Cbworker\Core\AbstractInterface\Response;
 
@@ -40,6 +41,9 @@ class HttpResponse extends ServiceProvider implements Response
   }
 
   public function send($message = '', $raw = false) {
+    foreach ($this->_headers as $header) {
+      Http::header($header);
+    }
     if(!empty($message)) {
       $this->_connection->send($message, $raw);
     } else {
