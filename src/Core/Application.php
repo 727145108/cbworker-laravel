@@ -598,7 +598,7 @@ class Application extends Container implements ApplicationContract
    */
   public function basePath()
   {
-    // TODO: Implement basePath() method.
+    return $this->basePath;
   }
 
   /**
