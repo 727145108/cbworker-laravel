@@ -25,7 +25,7 @@ class HttpResponse extends ServiceProvider implements Response
 
   protected $_headers = array(
     'Access-Control-Allow-Origin:*',
-    'Content-type:application/json;charset=utf-8'
+    'Content-Type:application/json;charset=utf-8'
   );
 
   protected $_raw = false;
