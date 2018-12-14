@@ -92,7 +92,13 @@ class HttpRequest implements Request
   }
 
   public function uri() {
-    return isset($this->_server['REQUEST_URI']) ? $this->_server['REQUEST_URI'] : '/index/index';
+    $_uri = isset($this->_server['REQUEST_URI']) ? $this->_server['REQUEST_URI'] : config('app.prefix') . '/index/index';
+    preg_match('/\/api\/([a-z]+)\/([a-z]+)/i', $_uri, $matches);
+    if(isset($matches[1]) && isset($matches[2])) {
+      return '/' . $matches[1] . '/' . $matches[2];
+    } else {
+      return $_uri;
+    }
   }
 
   public function path() {

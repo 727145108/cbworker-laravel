@@ -52,13 +52,7 @@ class Dispatcher implements DispatcherContract
       $this->_controller->{$this->_method}(...array_values($parameters));
 
     } catch (\Exception $ex) {
-      if (config('app.debug')) {
-        response()->setCode($ex->getCode());
-        response()->setMessage($ex->getMessage());
-      } else {
-        response()->setCode($ex->getCode());
-      }
-      logger()->error('methodDispatch Exception', ['code' => $ex->getCode(), 'message' => $ex->getMessage()]);
+      throw new \Exception($ex->getMessage(), (int) $ex->getCode());
     }
 
     if (config('app.report')) {
@@ -87,11 +81,12 @@ class Dispatcher implements DispatcherContract
     } catch (\Exception $ex) {
       if (config('app.debug')) {
         response()->setCode($ex->getCode());
-        response()->setMessage($ex->getMessage());
+        response()->setMessage(iconv('GBK', 'UTF-8', $ex->getMessage()));
       } else {
         response()->setCode($ex->getCode());
         //$this->response()->setCode(-99);
       }
+      logger()->error('methodDispatch Exception', ['code' => $ex->getCode(), 'message' => iconv('GBK', 'UTF-8', $ex->getMessage())]);
     }
     logger()->info('Response:', response()->build());
     response()->send();

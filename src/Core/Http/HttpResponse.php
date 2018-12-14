@@ -10,6 +10,7 @@ namespace Cbworker\Core\Http;
 
 use Illuminate\Support\ServiceProvider;
 use Cbworker\Core\AbstractInterface\Response;
+use Workerman\Protocols\Http;
 
 class HttpResponse extends ServiceProvider implements Response
 {
@@ -24,7 +25,7 @@ class HttpResponse extends ServiceProvider implements Response
 
   protected $_headers = array(
     'Access-Control-Allow-Origin:*',
-    'Content-type: application/json;charset=utf-8'
+    'Content-Type:application/json;charset=utf-8'
   );
 
   protected $_raw = false;
@@ -40,6 +41,9 @@ class HttpResponse extends ServiceProvider implements Response
   }
 
   public function send($message = '', $raw = false) {
+    foreach ($this->_headers as $header) {
+      Http::header($header);
+    }
     if(!empty($message)) {
       $this->_connection->send($message, $raw);
     } else {
