@@ -57,6 +57,13 @@ class HttpRequest implements Request
     return $this->_post;
   }
 
+  public function files($key = '', $default = '') {
+    if(!empty($key)) {
+      return isset($this->_files[$key]) ? $this->_files[$key] : $default;
+    }
+    return $this->_files;
+  }
+
   public function cookie($key = '', $default = '') {
     if(!empty($key)) {
       return isset($this->_cookie[$key]) ? $this->_cookie[$key] : $default;
