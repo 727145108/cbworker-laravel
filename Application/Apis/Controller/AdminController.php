@@ -12,9 +12,9 @@ namespace Application\Apis\Controller;
 use Event;
 use Application\Apis\Events\Warehouse;
 use Cbworker\Core\Http\Controller;
-use Illuminate\Database\Migrations\Migrator;
 use Application\Apis\Events\Warehouse as warehouseEvent;
 use Application\Apis\Services\b as bService;
+use Illuminate\Support\Facades\Queue;
 
 class AdminController extends Controller
 {
@@ -46,6 +46,12 @@ class AdminController extends Controller
     $info = $this->bService->getDetail(1);
     Event::fire(new warehouseEvent($info));
     response()->setData(['list' => ['id' => $info]]);
+  }
+  
+  public function queue() {
+    echo "Run...\n";
+    Queue::push(new \Application\Apis\Jobs\TestJob());
+    echo "Run111...\n";
   }
 
   public function migrate() {

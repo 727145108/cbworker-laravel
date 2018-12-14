@@ -17,6 +17,7 @@ return [
 
   'name'          => 'CbWorkerApis',
   'namespace'     => 'Application\Apis\\',
+  'prefix'        => '/v1',
 
   'report'        => true,
   'statistic'     => [
@@ -27,6 +28,7 @@ return [
     Illuminate\Database\DatabaseServiceProvider::class,
     Illuminate\Filesystem\FilesystemServiceProvider::class,
     Illuminate\Database\MigrationServiceProvider::class,
+    Cbworker\Core\Queue\QueueServiceProvider::class,
     Cbworker\Core\Redis\RedisServiceProvider::class,
     Application\Apis\Providers\EventServiceProvider::class,
   ],

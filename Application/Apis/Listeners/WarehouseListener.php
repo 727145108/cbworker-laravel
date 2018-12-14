@@ -18,7 +18,7 @@ class WarehouseListener
   }
 
   public function handle(Warehouse $warehouse) {
-    print_r('WarehouseListener handle');
+    //print_r('WarehouseListener handle');
   }
 
   public function failed(Warehouse $warehouse, $exception) {
