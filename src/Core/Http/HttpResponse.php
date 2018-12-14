@@ -11,7 +11,6 @@ namespace Cbworker\Core\Http;
 use Workerman\Protocols\Http;
 use Illuminate\Support\ServiceProvider;
 use Cbworker\Core\AbstractInterface\Response;
-use Workerman\Protocols\Http;
 
 class HttpResponse extends ServiceProvider implements Response
 {
