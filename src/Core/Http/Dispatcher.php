@@ -81,12 +81,12 @@ class Dispatcher implements DispatcherContract
     } catch (\Exception $ex) {
       if (config('app.debug')) {
         response()->setCode($ex->getCode());
-        response()->setMessage(iconv('GBK', 'UTF-8', $ex->getMessage()));
+        response()->setMessage($ex->getMessage());
       } else {
         response()->setCode($ex->getCode());
         //$this->response()->setCode(-99);
       }
-      logger()->error('methodDispatch Exception', ['code' => $ex->getCode(), 'message' => iconv('GBK', 'UTF-8', $ex->getMessage())]);
+      logger()->error('methodDispatch Exception', ['code' => $ex->getCode(), 'message' => $ex->getMessage()]);
     }
     logger()->info('Response:', response()->build());
     response()->send();
