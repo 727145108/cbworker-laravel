@@ -1,0 +1,4 @@
+[2018-12-17 13:18:08] local.INFO: Request: {"class":"Admin","method":"queue"} 
+[2018-12-17 13:18:08] local.INFO: User_Agent: {"QUERY_STRING":"","REQUEST_METHOD":"GET","REQUEST_URI":"/Admin/queue","SERVER_PROTOCOL":"HTTP/1.1","SERVER_SOFTWARE":"workerman/3.5.16","SERVER_NAME":"127.0.0.1","HTTP_HOST":"127.0.0.1:8282","HTTP_USER_AGENT":"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36","HTTP_ACCEPT":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8","HTTP_ACCEPT_LANGUAGE":"zh-CN,zh;q=0.9","HTTP_ACCEPT_ENCODING":"gzip, deflate, br","HTTP_COOKIE":"","HTTP_CONNECTION":"keep-alive","CONTENT_TYPE":"","REMOTE_ADDR":"127.0.0.1","REMOTE_PORT":51017,"REQUEST_TIME":1545052688,"SERVER_PORT":"8282","HTTP_UPGRADE_INSECURE_REQUESTS":"1"} 
+[2018-12-17 13:18:08] local.INFO: Params:  
+[2018-12-17 13:18:08] local.INFO: Response: {"code":200,"message":"成功"} 

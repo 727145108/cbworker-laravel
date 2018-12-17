@@ -53,6 +53,10 @@ class AdminController extends Controller
     Queue::push(new \Application\Apis\Jobs\TestJob());
     echo "Run111...\n";
   }
+  
+  public function customer() {
+  
+  }
 
   public function migrate() {
     //DIRECTORY_SEPARATOR.'migrations';

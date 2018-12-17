@@ -25,6 +25,7 @@ return [
   ],
 
   'providers'     => [
+    Illuminate\Bus\BusServiceProvider::class,
     Illuminate\Database\DatabaseServiceProvider::class,
     Illuminate\Filesystem\FilesystemServiceProvider::class,
     Illuminate\Database\MigrationServiceProvider::class,

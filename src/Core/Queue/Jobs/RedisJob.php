@@ -2,7 +2,7 @@
 
 namespace Cbworker\Core\Queue\Jobs;
 
-use Illuminate\Queue\RedisQueue;
+use Cbworker\Core\Queue\RedisQueue;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Queue\Job as JobContract;
 

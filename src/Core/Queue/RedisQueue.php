@@ -3,7 +3,7 @@
 namespace Cbworker\Core\Queue;
 
 use Illuminate\Support\Str;
-use Illuminate\Queue\Jobs\RedisJob;
+use Cbworker\Core\Queue\Jobs\RedisJob;
 use Illuminate\Contracts\Redis\Factory as Redis;
 use Illuminate\Contracts\Queue\Queue as QueueContract;
 
