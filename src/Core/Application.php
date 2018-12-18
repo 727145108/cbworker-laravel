@@ -196,6 +196,7 @@ class Application extends Container implements ApplicationContract
                'db' => [\Illuminate\Database\DatabaseManager::class],
                'db.connection' => [\Illuminate\Database\Connection::class, \Illuminate\Database\ConnectionInterface::class],
                'events' => [\Cbworker\Core\Events\Dispatcher::class, \Illuminate\Contracts\Events\Dispatcher::class],
+               'redis'  => [\Cbworker\Core\Redis\Database::class, Illuminate\Contracts\Redis\Database::class],
              ] as $key => $aliases) {
       foreach ($aliases as $alias) {
         $this->alias($key, $alias);
