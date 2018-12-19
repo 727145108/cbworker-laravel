@@ -17,11 +17,20 @@ class TestJob extends Job implements ShouldQueue
 {
   use InteractsWithQueue, SerializesModels;
   
-  public function __construct() {
+  protected $order_id;
   
+  protected $timer;
+  
+  public function __construct($order_id, $timer) {
+    $this->order_id = $order_id;
+    $this->timer = $timer;
   }
   
   public function handle() {
-    echo "Test Job Handle \n";
+    if($this->order_id == 60) {
+      throw new \Exception('error', -354);
+    } else {
+      echo "Test Job Handle {$this->order_id} \t {$this->timer} \n";
+    }
   }
 }

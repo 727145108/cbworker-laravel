@@ -34,27 +34,25 @@ $app->singleton(
   Cbworker\Core\Http\Dispatcher::class
 );
 
-
-$_worker = new Worker('websocket://127.0.0.1:8382');
+$_worker = new Worker();
 $_worker->count = 1;
 $_worker->onWorkerStart = function ($worker) use ($app) {
   $_kernel = $app->make( Illuminate\Contracts\Http\Kernel::class);
   $_kernel->bootstrap();
-  
-  $job = app('queue')->connection()->pop();
-  print_r($job->fire());
-};
-$_worker->onConnect = function ($connection) {
-  echo $connection->id . " onConnect \n";
-};
-$_worker->onMessage = function ($connection, $data) use ($app) {
-  echo $connection->id . " onMessage \n";
-};
-$_worker->onClose = function ($connection) {
-  //echo $connection->id . " Close \n";
-};
-$_worker->onWorkerReload = function ($worker) {
-
+  Timer::add(0.5, function() use ($app) {
+    while (true) {
+      try {
+        $job = app('queue')->connection()->pop();
+        if($job) {
+          echo "Run Job ==> " . $job->getName() . "\tattempts:" . $job->attempts() . "\n";
+          $job->fire();
+        }
+      } catch (\Exception $e) {
+        logger()->error("Job Run Error:", [$e->getMessage()]);
+        return;
+      }
+    }
+  });
 };
 
 // 如果不是在根目录启动，则运行runAll方法

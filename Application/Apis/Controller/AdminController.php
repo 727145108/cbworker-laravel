@@ -49,9 +49,9 @@ class AdminController extends Controller
   }
   
   public function queue() {
-    echo "Run...\n";
-    Queue::push(new \Application\Apis\Jobs\TestJob());
-    echo "Run111...\n";
+    for ($i = 0; $i <= 1000; $i++ ) {
+      Queue::push(new \Application\Apis\Jobs\TestJob($i , date("Y-m-d H:i:s")));
+    }
   }
   
   public function customer() {
