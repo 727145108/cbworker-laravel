@@ -5,9 +5,11 @@
         "illuminate/events": "5.5",
         "illuminate/database": "5.5",
         "illuminate/filesystem": "5.5",
+        "jeremeamia/superclosure": "^2.4",
         "workerman/workerman": "^3.5",
         "monolog/monolog": "^1.24",
-        "predis/predis": "~1.0"
+        "predis/predis": "~1.0",
+        "illuminate/bus": "^5.5"
     },
     "autoload": {
         "files": ["src/helpers.php"],
