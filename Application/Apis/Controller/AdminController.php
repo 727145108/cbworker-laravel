@@ -9,6 +9,8 @@
 
 namespace Application\Apis\Controller;
 
+use Carbon\Carbon;
+use Illuminate\Contracts\Bus\Dispatcher;
 use Event;
 use Application\Apis\Events\Warehouse;
 use Cbworker\Core\Http\Controller;
@@ -49,9 +51,10 @@ class AdminController extends Controller
   }
   
   public function queue() {
-    for ($i = 0; $i <= 1000; $i++ ) {
-      Queue::push(new \Application\Apis\Jobs\TestJob($i , date("Y-m-d H:i:s")));
+    for ($i = 0; $i <= 10; $i++ ) {
+      //Queue::push((new \Application\Apis\Jobs\TestJob($i , date("Y-m-d H:i:s")))->delay(Carbon::now()->addMinute(20)));
     }
+    app(Dispatcher::class)->dispatch((new \Application\Apis\Jobs\TestJob($i , date("Y-m-d H:i:s")))->delay(Carbon::now()->addMinute(1)));
   }
   
   public function customer() {
