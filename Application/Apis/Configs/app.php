@@ -17,7 +17,7 @@ return [
 
   'name'          => 'CbWorkerApis',
   'namespace'     => 'Application\Apis\\',
-  'prefix'        => '/v1',
+  'prefix'        => 'oss',
 
   'report'        => true,
   'statistic'     => [
@@ -25,7 +25,7 @@ return [
   ],
 
   'providers'     => [
-    Illuminate\Bus\BusServiceProvider::class,
+    //Illuminate\Bus\BusServiceProvider::class,
     Illuminate\Database\DatabaseServiceProvider::class,
     Illuminate\Filesystem\FilesystemServiceProvider::class,
     Illuminate\Database\MigrationServiceProvider::class,
