@@ -89,6 +89,9 @@ class Dispatcher implements DispatcherContract
       logger()->error('methodDispatch Exception', ['code' => $ex->getCode(), 'message' => $ex->getMessage()]);
     }
     logger()->info('Response:', response()->build());
-    response()->send();
+    if(!response()->getRaw()) {
+      logger()->info('Response:', [response()->build()]);
+      response()->send();
+    }
   }
 }
