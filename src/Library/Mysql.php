@@ -113,27 +113,8 @@ class Mysql
       }
       $this->sQuery->execute();
     } catch (PDOException $e) {
-      if ($e->errorInfo[1] == 2006 || $e->errorInfo[1] == 2013) {
-        $this->closeConnection();
-        $this->connect();
-        try {
-          $this->sQuery = $this->pdo->prepare($query);
-          if (is_array($params)) {
-            foreach ($params as $key => $value) {
-              $this->sQuery->bindValue((int)($key + 1), $value);
-            }
-          }
-          $this->sQuery->execute();
-        } catch (PDOException $ex) {
-          $this->rollBackTrans();
-          $this->logger->error('Mysql Execute Error:' . $ex->getMessage());
-          throw new Exception('SQL Execute Error', (int)$ex->getCode());
-        }
-      } else {
-        $this->rollBackTrans();
         $this->logger->error('Mysql Execute Error:' . $e->getMessage());
         throw new Exception('SQL Execute Error', (int)$e->getCode());
-      }
     }
   }
   
@@ -206,15 +187,8 @@ class Mysql
     try {
       return $this->pdo->beginTransaction();
     } catch (PDOException $e) {
-      // 服务端断开时重连一次
-      if ($e->errorInfo[1] == 2006 || $e->errorInfo[1] == 2013) {
-        $this->closeConnection();
-        $this->connect();
-        return $this->pdo->beginTransaction();
-      } else {
         $this->logger->error("Mysql BeginTrans Error:" . $e->getMessage());
         throw new Exception('Database Error', (int)$e->getCode());
-      }
     }
   }
   
